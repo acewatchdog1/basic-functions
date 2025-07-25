@@ -1,0 +1,17 @@
+function isDivisibleBy7(n) {
+  if (typeof n !== 'number' || n < 0 || !Number.isInteger(n)) {
+    throw new Error("Input must be a non-negative integer.");
+  }
+
+  let steps = 0
+  while (n >= 100) {
+    const y = n % 10;         // last digit
+    const x = Math.floor(n / 10);  // all digits except the last
+    n = x - 2 * y;
+    steps++
+  }
+
+  return [n , steps]
+}
+
+console.log(isDivisibleBy7(371))
