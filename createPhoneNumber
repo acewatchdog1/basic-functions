@@ -1,0 +1,34 @@
+//First Implementation
+
+function createPhoneNumber(numbers){
+    let phoneNumber1 = []
+    for(let i=0;i<3;i++)
+        phoneNumber1.push(numbers[i])
+
+    phoneNumber1 = phoneNumber1.join('')
+
+    let phoneNumber2 = []
+    for(let i=3;i<=numbers.length;i++)
+        phoneNumber2.push(numbers[i])
+
+    phoneNumber2 = phoneNumber2.join('')
+
+    return `(${phoneNumber1})${phoneNumber2}`
+
+}
+
+console.log(createPhoneNumber([8,1,0,3,5,9,6,6,2,1]))
+
+//Second Implementation
+
+function createPhoneNumber(numbers) {
+  if (numbers.length !== 10 || numbers.some(n => n < 0 || n > 9)) {
+    throw new Error("Input must be an array of 10 integers between 0 and 9.");
+  }
+
+  const areaCode = numbers.slice(0, 3).join('');
+  const centralOfficeCode = numbers.slice(3, 6).join('');
+  const lineNumber = numbers.slice(6).join('');
+
+  return `(${areaCode}) ${centralOfficeCode}-${lineNumber}`;
+}
